@@ -7,7 +7,7 @@ using namespace std;
 static const int32_t MAX_ROW = 4;
 static const int32_t MAX_COL = 5;
 
-namespace VECTOR_UNROLL
+namespace VECTOR_UNROLL_integral_const
 {
 //unrolled function
 template<int32_t N>
@@ -34,7 +34,7 @@ void unroll_vector()
 }
 
 
-namespace MATRIX_UNROLL
+namespace MATRIX_UNROLL_integral_const
 {
 
 template<int32_t row, int32_t col>
@@ -80,7 +80,7 @@ void unroll_matrix()
 #include <type_traits>
 using namespace std;
 
-namespace VECTOR_UNROLL_1
+namespace VECTOR_UNROLL_boost
 {
 #include <boost/mpl/range_c.hpp>
 #include <boost/mpl/vector.hpp>
