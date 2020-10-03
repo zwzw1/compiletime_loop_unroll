@@ -76,8 +76,34 @@ void unroll_matrix()
 }
 }
 
+#include <iostream>
+#include <type_traits>
+using namespace std;
+
+namespace VECTOR_UNROLL_1
+{
+#include <boost/mpl/range_c.hpp>
+#include <boost/mpl/vector.hpp>
+#include <boost/mpl/for_each.hpp>
+#include <boost/mpl/transform.hpp>
+#include <boost/mpl/copy.hpp>
+struct value_printer
+{
+    template< typename U > void operator()(U x)
+    {
+        std::cout << x << '\n';
+    }
+};
+
+void unroll_loop()
+{
+    boost::mpl::for_each< boost::mpl::range_c<int,0,MAX_ROW> >( value_printer() );
+}
+}
+
+
 int main()
 {
-    VECTOR_UNROLL::unroll_vector();
+    VECTOR_UNROLL_1::unroll_loop();
     return 1;
 }
